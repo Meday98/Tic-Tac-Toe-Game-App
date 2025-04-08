@@ -3,10 +3,19 @@ import Xicon from "../icons/Xicon";
 import Oicon from "../icons/Oicon";
 import BoardCard from "./BoardCard";
 import { GameContext } from "../../context/GameContext";
+import { ModalContext } from "../../context/ModalContext";
 
 const Board = () => {
+  const { showModal, setModalMode } = useContext(ModalContext);
+
+  const handleRestart = () => {
+    showModal();
+    setModalMode("start");
+  };
+
   const { squares, winner, winnerLine, xnext, ties, activeUser, playMode } =
     useContext(GameContext);
+
   const checkUser = (user) => {
     if (playMode === "cpu") {
       if (user === activeUser) {
@@ -16,6 +25,7 @@ const Board = () => {
       }
     }
   };
+
   return (
     <div className="board">
       <div className="board__header">
@@ -29,10 +39,10 @@ const Board = () => {
           ) : (
             <Oicon color="light" size="sm" />
           )}
-          <Xicon color="light" size="sm" /> Turn
+          turn
         </div>
         <div>
-          <button className="btn btn-sm board__restart">
+          <button className="btn btn-sm board__restart" onClick={handleRestart}>
             <svg
               aria-hidden="true"
               focusable="false"
@@ -48,6 +58,7 @@ const Board = () => {
           </button>
         </div>
       </div>
+      {/* <BoardCard user="x" active={true} /> */}
       <div className="board__body">
         {squares.map((sq, ix) => (
           <BoardCard
@@ -61,15 +72,15 @@ const Board = () => {
       <div className="board__footer">
         <div className="card bg-blue">
           <p className="text-light">x {checkUser("x")}</p>
-          <strong className="text-2xl">{ties.x}</strong>
+          <strong className="text-2xl"> {ties.x} </strong>
         </div>
         <div className="card bg-light">
           <p className="text-light">ties</p>
-          <strong className="text-2xl">{ties.x + ties.o}</strong>
+          <strong className="text-2xl"> {ties.x + ties.o} </strong>
         </div>
         <div className="card bg-yellow">
           <p className="text-light">o {checkUser("o")}</p>
-          <strong className="text-2xl">{ties.o}</strong>
+          <strong className="text-2xl"> {ties.o}</strong>
         </div>
       </div>
     </div>

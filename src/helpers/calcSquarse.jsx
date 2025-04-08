@@ -31,9 +31,9 @@ export default function calcBestMove(squares, player) {
   };
 
   const sortedLines = lines.sort((a, b) => {
-    let acount = getArrDuplicatedCount(a);
-    let bcount = getArrDuplicatedCount(b);
-    return bcount - acount;
+    let aCount = getArrDuplicatedCount(a);
+    let bCount = getArrDuplicatedCount(b);
+    return bCount - aCount;
   });
 
   for (let i = 0; i < sortedLines.length; i++) {

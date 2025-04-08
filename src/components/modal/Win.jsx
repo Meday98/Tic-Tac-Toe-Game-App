@@ -4,12 +4,12 @@ import { GameContext } from "../../context/GameContext";
 import Oicon from "../icons/Oicon";
 
 const Win = () => {
-  const { winner, handleReset, handleNextRound } = useContext(GameContext);
+  const { winner, handleNextRound, handleReset } = useContext(GameContext);
   return (
     <div className="score">
       {winner && winner !== "no" ? (
         <>
-          <p>You win!</p>
+          <p>yoy win!</p>
           <h3
             className={`score__title ${
               winner === "o" ? "text-yellow" : "text-blue"

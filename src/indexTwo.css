@@ -183,7 +183,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
 }
 .start__players {
   width: 100%;
